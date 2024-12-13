@@ -1,0 +1,117 @@
+  [1m[35m (193.9ms)[0m  [1m[35mCREATE DATABASE "todo_app_db_dev" ENCODING = 'unicode'[0m
+  [1m[35m (59.4ms)[0m  [1m[35mCREATE DATABASE "todo_app_test_db" ENCODING = 'unicode'[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2375005004280526695)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (1.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-12-13 06:02:17.958983', '2024-12-13 06:02:17.958985') RETURNING "key"[0m
+Migrating to CreateTodos (20241213060209)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying, "description" text, "completed" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241213060209') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(2375005004280526695)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2375005004280526695)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTodos (20241213060209)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.5ms)[0m  [1m[35mDROP TABLE "todos"[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (1.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20241213060209'[0m
+  [1m[36mTRANSACTION (2.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(2375005004280526695)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2375005004280526695)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateTodos (20241213060209)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying NOT NULL, "description" text, "completed" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241213060209') RETURNING "version"[0m
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2375005004280526695)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/todos" for ::1 at 2024-12-13 08:08:48 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo"=>{"title"=>"New Task", "description"=>"Description"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:33:in `create'
+  [1m[36mTodo Create (3.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "New Task"], ["description", "Description"], ["completed", nil], ["created_at", "2024-12-13 06:08:48.210326"], ["updated_at", "2024-12-13 06:08:48.210326"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:33:in `create'
+Completed 201 Created in 35ms (Views: 0.2ms | ActiveRecord: 18.0ms | Allocations: 43899)
+
+
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" ORDER BY "todos"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/todos" for ::1 at 2024-12-13 08:12:51 +0200
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo"=>{"title"=>"Fooo", "description"=>"Description"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:33:in `create'
+  [1m[36mTodo Create (1.0ms)[0m  [1m[32mINSERT INTO "todos" ("title", "description", "completed", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Fooo"], ["description", "Description"], ["completed", nil], ["created_at", "2024-12-13 06:12:51.052046"], ["updated_at", "2024-12-13 06:12:51.052046"]]
+  ↳ app/controllers/api/v1/todos_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:33:in `create'
+Completed 201 Created in 9ms (Views: 0.2ms | ActiveRecord: 5.2ms | Allocations: 4483)
+
+
+Started PATCH "/api/v1/todos/1/toggle_complete" for ::1 at 2024-12-13 08:14:01 +0200
+Processing by Api::V1::TodosController#toggle_complete as */*
+  Parameters: {"id"=>"1", "todo"=>{}}
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:64:in `set_todo'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:57:in `toggle_complete'
+  [1m[36mTodo Update (1.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = $1, "updated_at" = $2 WHERE "todos"."id" = $3[0m  [["completed", true], ["updated_at", "2024-12-13 06:14:01.496696"], ["id", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:57:in `toggle_complete'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:57:in `toggle_complete'
+Completed 200 OK in 18ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 6213)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-12-13 08:14:28 +0200
+Processing by Api::V1::TodosController#index as */*
+  Parameters: {"todo"=>{}}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `index'
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.3ms | Allocations: 1347)
+
+
+Started GET "/api/v1/todos" for ::1 at 2024-12-13 08:15:52 +0200
+Processing by Api::V1::TodosController#index as */*
+  Parameters: {"todo"=>{}}
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" LIMIT $1 OFFSET $2[0m  [["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 882)
+
+
+Started GET "/api/v1/todos?status=completed" for ::1 at 2024-12-13 08:19:27 +0200
+Processing by Api::V1::TodosController#index as */*
+  Parameters: {"status"=>"completed"}
+  [1m[36mTodo Load (0.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."completed" = $1 LIMIT $2 OFFSET $3[0m  [["completed", true], ["LIMIT", 10], ["OFFSET", 0]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 870)
+
+
+Started GET "/api/v1/todos?status=completed&per_page=1&page=2" for ::1 at 2024-12-13 08:20:04 +0200
+Processing by Api::V1::TodosController#index as */*
+  Parameters: {"status"=>"completed", "per_page"=>"1", "page"=>"2"}
+  [1m[36mTodo Load (0.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."completed" = $1 LIMIT $2 OFFSET $3[0m  [["completed", true], ["LIMIT", 1], ["OFFSET", 1]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.3ms | Allocations: 805)
+
+
+Started GET "/api/v1/todos?status=completed&per_page=1&page=1" for ::1 at 2024-12-13 08:20:08 +0200
+Processing by Api::V1::TodosController#index as */*
+  Parameters: {"status"=>"completed", "per_page"=>"1", "page"=>"1"}
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."completed" = $1 LIMIT $2 OFFSET $3[0m  [["completed", true], ["LIMIT", 1], ["OFFSET", 0]]
+  ↳ app/controllers/api/v1/todos_controller.rb:21:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.4ms | Allocations: 863)
+
+
