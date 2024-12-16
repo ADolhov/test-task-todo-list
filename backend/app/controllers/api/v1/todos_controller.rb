@@ -3,7 +3,7 @@ class Api::V1::TodosController < ApplicationController
 
   # GET /api/v1/todos
   def index
-    @todos = Todo.all
+    @todos = Todo.order(created_at: :desc)
 
     # Filter by status
     @todos = case params[:status]
@@ -18,7 +18,7 @@ class Api::V1::TodosController < ApplicationController
     # Pagination
     @todos = @todos.page(params[:page]).per(per_page) # Requires kaminari gem
 
-    render json: @todos
+    render json: { todos: @todos, total_pages: @todos.total_pages, current_page: @todos.current_page }
   end
 
   # GET /api/v1/todos/1

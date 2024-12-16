@@ -1,6 +1,10 @@
+// frontend/app/page.js
+import TodoList from './components/TodoList';
 
 export default function Home() {
   return (
-   <h1>Hello World</h1>
+    <main className="min-h-screen p-8">
+      <TodoList />
+    </main>
   );
 }
