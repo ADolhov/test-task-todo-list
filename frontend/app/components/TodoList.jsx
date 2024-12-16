@@ -5,7 +5,7 @@ import { todosApi } from '../api/todos';
 import Filter from './Filter';
 import TodoItem from './TodoItem';
 import Pagination from './Pagination';
-import ErrorMessage from './ErrorMessage';
+import FlashMessage from './FlashMessage';
 import CreateTodoItem from './CreateTodoItem';
 
 export default function TodoList() {
@@ -16,6 +16,13 @@ export default function TodoList() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [perPage, setPerPage] = useState(5);
+  const [flash, setFlash] = useState(null);
+
+  const showFlash = (message, type = 'success') => {
+    setFlash({ message, type });
+    // Auto-dismiss after 3 seconds
+    setTimeout(() => setFlash(null), 6000);
+  };
 
   const fetchTodos = async () => {
     setLoading(true);
@@ -41,22 +48,21 @@ export default function TodoList() {
     fetchTodos();
   }, [filter, currentPage, perPage]); // Add perPage to dependencies
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
-  };
-
-  const handlePerPageChange = (newPerPage) => {
-    setPerPage(newPerPage);
-    setCurrentPage(1); // Reset to first page when changing items per page
+  const handleCreateTodo = async () => {
+    setCurrentPage(1);
+    fetchTodos()
+    showFlash(`New TODO created successfully!`);
   };
 
   const handleDeleteTodo = async (id) => {
-    setError(null);
     try {
-      await todosApi.deleteTodo(id);
-      fetchTodos();
-    } catch (err) {
-      setError('Failed to delete todo. Please try again.');
+      const response = await todosApi.deleteTodo(id);
+      if (response.ok) {
+        fetchTodos()
+        showFlash(`TODO-${id} deleted successfully!`);
+      }
+    } catch (error) {
+      showFlash('Failed to delete todo', 'error');
     }
   };
 
@@ -70,29 +76,48 @@ export default function TodoList() {
     }
   };
 
+  const handleUpdateTodo = async (id, updatedTodo) => {
+    try {
+      const response = await todosApi.updateTodo(id, updatedTodo);
+      if (response.ok) {
+        setTodos(todos.map(todo =>
+          todo.id === id ? { ...todo, ...updatedTodo } : todo
+        ));
+        showFlash(`TODO-${id} created successfully!`);
+      }
+    } catch (error) {
+        showFlash('Failed to update todo', 'error');
+    }
+  };
+
   return (
     <div className="max-w-4xl mx-auto p-4">
+        {flash && (
+        <FlashMessage
+          message={flash.message}
+          type={flash.type}
+          onDismiss={() => setFlash(null)}
+        />
+      )}
       <div className="mb-6">
-        <h1 className="text-3xl font-bold mb-4">Todo List</h1>
+        <CreateTodoItem onTodoCreated={handleCreateTodo} />
 
-        {error && (
-          <ErrorMessage message={error} onDismiss={() => setError(null)} />
-        )}
+        <h1 className="text-3xl font-bold mb-4">Todo List</h1>
 
         <Filter currentFilter={filter} onFilterChange={setFilter} />
 
-        <CreateTodoItem onTodoCreated={fetchTodos} />
 
         {loading ? (
           <p>Loading...</p>
         ) : (
           <div className="space-y-4">
             {todos.map((todo) => (
-              <TodoItem
+             <TodoItem
                 key={todo.id}
                 todo={todo}
                 onToggleComplete={handleToggleComplete}
                 onDelete={handleDeleteTodo}
+                onUpdate={handleUpdateTodo}
               />
             ))}
           </div>

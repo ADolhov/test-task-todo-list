@@ -1,6 +1,5 @@
 // frontend/app/__tests__/TodoList.test.jsx
 import { render, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import TodoList from '../../components/TodoList';
 import { todosApi } from '../../api/todos';
 
@@ -28,8 +27,8 @@ describe('TodoList', () => {
       expect(todosApi.fetchTodos).toHaveBeenCalled();
     });
 
-    expect(screen.getByText('Test Todo 1')).toBeInTheDocument();
-    expect(screen.getByText('Test Todo 2')).toBeInTheDocument();
+    expect(screen.getByText('TODO-1: Test Todo 1')).toBeInTheDocument();
+    expect(screen.getByText('TODO-2: Test Todo 2')).toBeInTheDocument();
   });
 
   it('displays loading state while fetching todos', async () => {

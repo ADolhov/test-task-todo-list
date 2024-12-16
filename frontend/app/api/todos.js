@@ -20,6 +20,17 @@ export const todosApi = {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({ todo: todo }),
+    });
+    return response;
+  },
+
+  updateTodo: async (id, todo) => {
+    const response = await fetch(`${BASE_URL}/todos/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ todo }),
     });
     return response;
