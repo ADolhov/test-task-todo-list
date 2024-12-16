@@ -1,0 +1,18 @@
+# bin/setup
+#!/usr/bin/env bash
+set -e
+
+# Backend setup
+echo "🚀 Setting up Rails backend..."
+cd backend
+bundle install
+rails db:setup
+cd ..
+
+# Frontend setup
+echo "🚀 Setting up Next.js frontend..."
+cd frontend
+pnpm install
+cd ..
+
+echo "✅ Setup complete!"

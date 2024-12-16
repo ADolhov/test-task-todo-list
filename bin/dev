@@ -1,0 +1,13 @@
+# bin/dev
+#!/usr/bin/env bash
+set -e
+
+if ! command -v foreman &> /dev/null; then
+  echo "Installing foreman..."
+  gem install foreman
+fi
+
+# Default to development if no environment is specified
+export RAILS_ENV=${RAILS_ENV:-development}
+
+exec foreman start -f Procfile.dev

@@ -1,56 +1,41 @@
-Inside the frontend folder
+## Development Setup
+- Next.js 14
+- Rails 7
 
-Install dependencies:
+### Prerequisites
+- Ruby 3.x
+- Node.js 18+
+- PostgreSQL
+- pnpm
 
-```bash
-pnpm install
-```
+### Getting Started
 
-To run the development server:
-
-```bash
-pnpm dev
-```
-
-To run tests:
+1. Clone the repository
 
 ```bash
-pnpm test
+git clone git@github.com:ADolhov/test-task-todo-list.git
+cd test-task-todo-list
 ```
 
-Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
-
-
-Inside the backend folder:
-
-Install dependencies:
+2. Run the setup script inside the root folder
 
 ```bash
-bundle install
+bin/setup
 ```
 
-Create the database:
+3. Start the development servers (it will start both frontend and backend)
 
 ```bash
-rails db:create
+bin/dev
 ```
 
-Run the migrations:
+The application will be available at:
+- Frontend: http://localhost:3001
+- Backend API: http://localhost:3000
 
-```bash
-rails db:migrate
-```
+### Development Commands
 
-Run the server:
-
-```bash
-rails s
-```
-
-Create a todo:
-
-```bash
-rails db:seed
-```
-
-Open [http://localhost:3000](http://localhost:3000/api/v1/todos) with your browser to see the result.
+- `bin/setup` - Set up the project for development
+- `bin/dev` - Start development servers
+- `cd backend && rails c` - Start Rails console
+- `cd frontend && pnpm test` - Run frontend tests
