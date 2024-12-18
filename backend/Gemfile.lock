@@ -95,6 +95,10 @@ GEM
     diff-lcs (1.5.1)
     dockerfile-rails (1.6.25)
       rails (>= 3.0.0)
+    dotenv (2.8.1)
+    dotenv-rails (2.8.1)
+      dotenv (= 2.8.1)
+      railties (>= 3.2)
     drb (2.2.1)
     erubi (1.13.0)
     factory_bot (6.4.5)
@@ -266,6 +270,7 @@ DEPENDENCIES
   bootsnap
   debug
   dockerfile-rails (>= 1.5)
+  dotenv-rails
   factory_bot_rails
   faker
   kaminari

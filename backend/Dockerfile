@@ -2,7 +2,11 @@
 FROM ruby:2.7.8
 
 # Install dependencies
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get update -qq && \
+    apt-get install -y build-essential \
+                       libpq-dev \
+                       postgresql-client \
+                       nodejs
 
 # Set working directory
 WORKDIR /app
@@ -21,9 +25,6 @@ COPY . .
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile --gemfile
-
-# Precompile assets
-RUN SECRET_KEY_BASE=dummy bundle exec rails assets:precompile
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin/
