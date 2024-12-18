@@ -1,0 +1,26 @@
+{
+    "extends": [
+        "next",
+        "next/core-web-vitals"
+    ],
+    "env": {
+        "browser": true,
+        "node": true,
+        "es6": true
+    },
+    "rules": {
+        "no-unused-vars": "warn",
+        "no-console": ["warn", { "allow": ["warn", "error"] }],
+        "semi": ["error", "always"],
+        "quotes": ["error", "single"],
+        "indent": ["error", 2]
+    },
+    "ignorePatterns": [
+        "node_modules/",
+        ".next/",
+        "build/",
+        "dist/",
+        "coverage/",
+        "public/"
+    ]
+}
