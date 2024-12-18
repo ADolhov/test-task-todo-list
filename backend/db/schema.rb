@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,18 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_16_192853) do
+ActiveRecord::Schema[7.1].define(version: 20_241_216_192_853) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "todos", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "description"
-    t.boolean "completed", default: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["completed"], name: "index_todos_on_completed"
-    t.index ["title"], name: "index_todos_on_title"
+  create_table 'todos', force: :cascade do |t|
+    t.string 'title', null: false
+    t.text 'description'
+    t.boolean 'completed', default: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['completed'], name: 'index_todos_on_completed'
+    t.index ['title'], name: 'index_todos_on_title'
   end
-
 end

@@ -1,4 +1,4 @@
-
+# frozen_string_literal: true
 
 Todo.create(title: 'Purchase groceries', description: 'Buy groceries for the week')
 Todo.create(title: 'Take a nap', description: 'Take a nap in the afternoon')
