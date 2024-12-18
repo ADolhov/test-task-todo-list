@@ -29,3 +29,10 @@
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/.keep
+
+# Ignore markdown files.
+*.md
+
+# Ignore docker-compose.yml and Dockerfile.
+docker-compose.yml
+Dockerfile*
