@@ -45,7 +45,7 @@ export default function Pagination({
           <select
             value={perPage}
             onChange={handlePerPageChange}
-            className="border rounded px-2 py-1"
+            className="border rounded px-2 py-1 pagination-select"
           >
             {perPageOptions.map(option => (
               <option key={option} value={option}>

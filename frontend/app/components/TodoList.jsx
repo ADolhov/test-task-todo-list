@@ -21,7 +21,7 @@ export default function TodoList() {
   const showFlash = (message, type = 'success') => {
     setFlash({ message, type });
     // Auto-dismiss after 3 seconds
-    setTimeout(() => setFlash(null), 6000);
+    setTimeout(() => setFlash(null), 12000);
   };
 
   const fetchTodos = async () => {
@@ -50,7 +50,7 @@ export default function TodoList() {
 
   const handleCreateTodo = async () => {
     setCurrentPage(1);
-    fetchTodos()
+    await fetchTodos()
     showFlash(`New TODO created successfully!`);
   };
 
@@ -78,12 +78,12 @@ export default function TodoList() {
 
   const handleUpdateTodo = async (id, updatedTodo) => {
     try {
-      const response = await todosApi.updateTodo(id, updatedTodo);
+      const response = await todosApi.updateTodo(updatedTodo);
       if (response.ok) {
         setTodos(todos.map(todo =>
           todo.id === id ? { ...todo, ...updatedTodo } : todo
         ));
-        showFlash(`TODO-${id} created successfully!`);
+        showFlash(`TODO-${id} updated successfully!`);
       }
     } catch (error) {
         showFlash('Failed to update todo', 'error');

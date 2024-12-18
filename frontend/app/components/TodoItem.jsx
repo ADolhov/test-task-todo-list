@@ -6,6 +6,7 @@ export default function TodoItem({ todo, onToggleComplete, onDelete, onUpdate })
   const [editedTodo, setEditedTodo] = useState({ ...todo });
 
   const handleSave = async () => {
+
     if (!editedTodo.title.trim()) {
       return; // Don't save if title is empty
     }
@@ -45,7 +46,8 @@ export default function TodoItem({ todo, onToggleComplete, onDelete, onUpdate })
           <div className="flex gap-2">
             <button
               onClick={handleSave}
-              className="bg-blue-500 text-white px-3 py-1 rounded"
+              disabled={JSON.stringify(editedTodo) === JSON.stringify(todo)}
+              className="bg-blue-500 text-white px-3 py-1 rounded disabled:opacity-50"
             >
               Save
             </button>

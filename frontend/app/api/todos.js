@@ -15,23 +15,25 @@ export const todosApi = {
   },
 
   createTodo: async (todo) => {
+    const { created_at, updated_at, id, ...todoData } = todo;
     const response = await fetch(`${BASE_URL}/todos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ todo: todo }),
+      body: JSON.stringify({ todo: todoData }),
     });
     return response;
   },
 
-  updateTodo: async (id, todo) => {
+  updateTodo: async (todo) => {
+    const { created_at, updated_at, id, ...todoData } = todo;
     const response = await fetch(`${BASE_URL}/todos/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ todo }),
+      body: JSON.stringify({ todo: todoData }),
     });
     return response;
   },
